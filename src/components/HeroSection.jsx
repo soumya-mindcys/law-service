@@ -1,6 +1,7 @@
 // HeroSection.jsx
 import React from 'react';
 import styled from 'styled-components';
+import LegalUpdates from "./LegalUpdates"
 
 const Section = styled.section`
   min-height: 100vh;
@@ -132,6 +133,7 @@ const SecondaryButton = styled.button`
 `;
 
 const HeroSection = ({ scrollToSection }) => (
+  <>
   <Section id="home">
     <Overlay>
       <Container>
@@ -155,6 +157,8 @@ const HeroSection = ({ scrollToSection }) => (
       </Container>
     </Overlay>
   </Section>
+   <LegalUpdates />
+   </>
 );
 
 export default HeroSection;

@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import lawyerProfileImg from '../assets/1654083998_lawyer-profile.png';
+import BeliefsSection from './BeliefsSection';
+import PhilosophySection from './PhilosophySection'
 
 const Section = styled.section`
   padding: 4rem 0;
@@ -158,6 +160,7 @@ const CountUp = ({ end, duration = 2, suffix = '' }) => {
 };
 
 const AboutSection = () => (
+  <>
   <Section id="about">
     <Container>
       <Title>About DKP & Associates</Title>
@@ -203,6 +206,9 @@ const AboutSection = () => (
       </QuoteBox>
     </Container>
   </Section>
+  <PhilosophySection/>
+  <BeliefsSection/>
+  </>
 );
 
 export default AboutSection;
