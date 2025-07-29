@@ -1,295 +1,4 @@
-// // Navigation.jsx
-// import React, { useState } from "react";
-// import { Phone, Menu, X, Scale, ChevronDown, ChevronUp } from "lucide-react";
-// import "../App.css";
-
-// const Navigation = ({
-//   isMenuOpen,
-//   setIsMenuOpen,
-//   isSticky,
-//   scrollToSection,
-// }) => {
-//   const [servicesOpen, setServicesOpen] = useState(false); // For desktop dropdown
-//   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-
-//   return (
-//     <nav
-//       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-//         isSticky ? "bg-white shadow-lg" : "bg-white shadow-md"
-//       }`}
-//       style={{
-//         borderBottom: "1.5px solid #f3f4f6",
-//         background: "rgba(255,255,255,0.98)",
-//       }}
-//     >
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between items-center h-16">
-//           {/* Logo Section */}
-//           <div
-//             className="flex items-center space-x-2 cursor-pointer"
-//             onClick={() => scrollToSection("home")}
-//           >
-//             <span
-//               className="flex items-center justify-center rounded-full bg-orange-500"
-//               style={{ width: 36, height: 36 }}
-//             >
-//               <Scale className="h-6 w-6 text-white" />
-//             </span>
-//             <span
-//               className="text-2xl font-bold text-black tracking-tight"
-//               style={{ letterSpacing: "-1px" }}
-//             >
-//               DKP <span style={{ color: "var(--accent-orange)" }}>&</span>{" "}
-//               Associates
-//             </span>
-//           </div>
-
-//           {/* Desktop Menu */}
-//           <div
-//             className="hidden md:flex items-center space-x-8"
-//             style={{ marginLeft: "auto" }}
-//           >
-//             <button
-//               onClick={() => scrollToSection("home")}
-//               className="nav-link font-semibold text-lg relative"
-//               style={{ background: "none", border: "none", boxShadow: "none" }}
-//             >
-//               Home
-//             </button>
-//             <button
-//               onClick={() => scrollToSection("about")}
-//               className="nav-link font-semibold text-lg relative"
-//               style={{ background: "none", border: "none", boxShadow: "none" }}
-//             >
-//               About
-//             </button>
-
-//             {/* Our Services Dropdown - Desktop */}
-//             <div
-//               className="relative"
-//               onMouseEnter={() => setServicesOpen(true)}
-//               onMouseLeave={() => setServicesOpen(false)}
-//             >
-//               <button
-//                 className="nav-link font-semibold text-lg relative flex items-center gap-1"
-//                 style={{
-//                   background: "none",
-//                   border: "none",
-//                   boxShadow: "none",
-//                 }}
-//                 type="button"
-//               >
-//                 Our Services
-//                 <ChevronDown
-//                   className={`h-4 w-4 transition-transform ${
-//                     servicesOpen ? "rotate-180" : ""
-//                   }`}
-//                 />
-//               </button>
-
-//               {servicesOpen && (
-//                 <div
-//                   className="absolute left-0 mt-3 w-80 bg-white border border-orange-200 shadow-2xl rounded-2xl z-50 py-3 px-2 animate-fadeInDown"
-//                   style={{
-//                     boxShadow: "0 12px 32px rgba(255,107,53,0.18)",
-//                     borderTop: "4px solid #FF6B35",
-//                     transition: "all 0.2s",
-//                     background:
-//                       "linear-gradient(135deg, #fff 80%, #ffe5d0 100%)",
-//                   }}
-//                 >
-//                   {[
-//                     { id: "litigation", name: "Litigation", icon: "⚖️" },
-//                     { id: "ipr", name: "IPR", icon: "🔒" },
-//                     { id: "registration", name: "Registration", icon: "📝" },
-//                     {
-//                       id: "compliance-services",
-//                       name: "Compliance Services",
-//                       icon: "✅",
-//                     },
-//                     { id: "consulting", name: "Consulting", icon: "💡" },
-//                     {
-//                       id: "contracts-drafting",
-//                       name: "Contracts & Agreements Drafting",
-//                       icon: "📄",
-//                     },
-//                   ].map((service) => (
-//                     <button
-//                       key={service.id}
-//                       onClick={() => scrollToSection(service.id)}
-//                       className="flex items-center gap-3 w-full text-left px-5 py-3 hover:bg-orange-100 hover:text-orange-700 font-semibold text-gray-700 transition rounded-xl mb-1 last:mb-0 group"
-//                       style={{
-//                         fontSize: "1.08rem",
-//                         letterSpacing: "0.01em",
-//                         border: "none",
-//                         background: "none",
-//                         position: "relative",
-//                         overflow: "hidden",
-//                       }}
-//                     >
-//                       <span
-//                         className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-orange-50 group-hover:bg-orange-500 group-hover:text-white text-orange-500 shadow"
-//                         style={{ fontSize: "1.15rem", transition: "all 0.2s" }}
-//                       >
-//                         {service.icon}
-//                       </span>
-//                       <span className="flex-1">{service.name}</span>
-//                     </button>
-//                   ))}
-//                 </div>
-//               )}
-//             </div>
-
-//             <button
-//               onClick={() => scrollToSection("success-story")}
-//               className="nav-link font-semibold text-lg relative"
-//               style={{ background: "none", border: "none", boxShadow: "none" }}
-//             >
-//               Success Story
-//             </button>
-//             <button
-//               onClick={() => scrollToSection("articles-blogs")}
-//               className="nav-link font-semibold text-lg relative"
-//               style={{ background: "none", border: "none", boxShadow: "none" }}
-//             >
-//               Articles & Blogs
-//             </button>
-//             <button
-//               onClick={() => scrollToSection("contact")}
-//               className="nav-link font-semibold text-lg relative"
-//               style={{ background: "none", border: "none", boxShadow: "none" }}
-//             >
-//               Contact
-//             </button>
-//           </div>
-
-//           {/* Call Button & Hamburger */}
-//           <div className="flex items-center space-x-4">
-//             <a
-//               href="tel:+91-9876543210"
-//               className="btn-primary hidden sm:flex shadow-md items-center"
-//               style={{
-//                 fontWeight: 700,
-//                 fontSize: "1rem",
-//                 boxShadow: "0 2px 8px rgba(255,107,53,0.10)",
-//               }}
-//             >
-//               <Phone className="h-4 w-4 mr-2" />
-//               Call Now
-//             </a>
-//             <button
-//               onClick={() => setIsMenuOpen(!isMenuOpen)}
-//               className="md:hidden text-black border border-orange-500 rounded-lg p-2 bg-white shadow-sm"
-//               style={{ boxShadow: "0 1px 4px rgba(255,107,53,0.10)" }}
-//               aria-label="Toggle menu"
-//             >
-//               {isMenuOpen ? (
-//                 <X className="h-6 w-6 text-orange-500" />
-//               ) : (
-//                 <Menu className="h-6 w-6 text-orange-500" />
-//               )}
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Mobile Menu */}
-//         {isMenuOpen && (
-//           <div
-//             className="md:hidden bg-orange-500 absolute top-16 left-0 right-0 shadow-lg rounded-b-lg animate-fadeInDown"
-//             style={{ zIndex: 49 }}
-//           >
-//             <div className="px-4 py-2 space-y-2">
-//               <button
-//                 onClick={() => scrollToSection("home")}
-//                 className="mobile-nav-link font-semibold text-lg"
-//               >
-//                 Home
-//               </button>
-//               <button
-//                 onClick={() => scrollToSection("about")}
-//                 className="mobile-nav-link font-semibold text-lg"
-//               >
-//                 About
-//               </button>
-
-//               {/* Our Services Expandable - Mobile */}
-//               <div>
-//                 <button
-//                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-//                   className="mobile-nav-link font-semibold text-lg flex justify-between items-center w-full"
-//                 >
-//                   <span>Our Services</span>
-//                   {mobileServicesOpen ? (
-//                     <ChevronUp className="h-5 w-5" />
-//                   ) : (
-//                     <ChevronDown className="h-5 w-5" />
-//                   )}
-//                 </button>
-
-//                 {mobileServicesOpen && (
-//                   <div className="mt-1 space-y-1 bg-orange-400 rounded-lg p-2">
-//                     {[
-//                       { id: "litigation", name: "Litigation" },
-//                       { id: "ipr", name: "IPR" },
-//                       { id: "registration", name: "Registration" },
-//                       {
-//                         id: "compliance-services",
-//                         name: "Compliance Services",
-//                       },
-//                       { id: "consulting", name: "Consulting" },
-//                       {
-//                         id: "contracts-drafting",
-//                         name: "Contracts & Agreements Drafting",
-//                       },
-//                     ].map((service) => (
-//                       <button
-//                         key={service.id}
-//                         onClick={() => scrollToSection(service.id)}
-//                         className="block w-full text-left px-3 py-2 rounded-md hover:bg-orange-300 transition-colors duration-200 text-white font-medium"
-//                       >
-//                         {service.name}
-//                       </button>
-//                     ))}
-//                   </div>
-//                 )}
-//               </div>
-
-//               <button
-//                 onClick={() => scrollToSection("success-story")}
-//                 className="mobile-nav-link font-semibold text-lg"
-//               >
-//                 Success Story
-//               </button>
-//               <button
-//                 onClick={() => scrollToSection("articles-blogs")}
-//                 className="mobile-nav-link font-semibold text-lg"
-//               >
-//                 Articles & Blogs
-//               </button>
-//               <button
-//                 onClick={() => scrollToSection("contact")}
-//                 className="mobile-nav-link font-semibold text-lg"
-//               >
-//                 Contact
-//               </button>
-//               <a
-//                 href="tel:+91-9876543210"
-//                 className="mobile-nav-link flex items-center font-semibold text-lg"
-//               >
-//                 <Phone className="h-4 w-4 mr-2" />
-//                 Call Now
-//               </a>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navigation;
-
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Phone, Menu, X, Scale, ChevronDown, ChevronUp } from "lucide-react";
 import styled, { keyframes, css } from "styled-components";
 import { useNavigate } from 'react-router-dom';
@@ -669,6 +378,98 @@ const MobilePhoneIcon = styled(Phone)`
   margin-right: 0.5rem;
 `;
 
+const ServiceItemWithSubmenu = styled.div`
+  position: relative;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #f8f9fa;
+  }
+`;
+
+const SubmenuArrow = styled.span`
+  float: right;
+  font-size: 14px;
+  color: #666;
+`;
+
+const LitigationSubmenu = styled.div`
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 300px;
+  max-width: 400px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  max-height: 400px;
+  overflow-y: auto;
+`;
+
+const SubmenuItem = styled.div`
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+// Add this to your styled components file:
+
+const RegistrationSubmenu = styled.div`
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 350px;
+  max-width: 450px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  max-height: 400px;
+  overflow-y: auto;
+`;
+
+const MobileRegistrationButton = styled.button`
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+  background-color: #f8f9fa;
+  margin-bottom: 8px;
+  border-radius: 6px;
+`;
+
+const MobileRegistrationDropdown = styled.div`
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+`;
+
 const Navigation = ({
   isMenuOpen,
   setIsMenuOpen,
@@ -678,11 +479,132 @@ const Navigation = ({
   const navigate = useNavigate();
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [litigationOpen, setLitigationOpen] = useState(false);
+  const [mobileLitigationOpen, setMobileLitigationOpen] = useState(false);
+  const [registrationOpen, setRegistrationOpen] = useState(false);
+  const [mobileRegistrationOpen, setMobileRegistrationOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  // Litigation Support subcategories
+  const litigationSubcategories = [
+    { id: "alternative-dispute-resolution", name: "Alternative Dispute Resolution" },
+    { id: "regulatory-compliance-litigation", name: "Regulatory & Compliance Litigation" },
+    { id: "financial-services-banking", name: "Financial Services & Banking Litigation" },
+    { id: "corporate-commercial", name: "Corporate & Commercial Litigation" },
+    { id: "taxation-revenue", name: "Taxation & Revenue Litigation" },
+    { id: "real-estate-property", name: "Real Estate & Property Litigation" },
+    { id: "employment-labor", name: "Employment & Labor Law Litigation" },
+    { id: "intellectual-property", name: "Intellectual Property Litigation" },
+    { id: "criminal-investigative", name: "Criminal & Investigative Matters" },
+    { id: "public-interest", name: "Public Interest & Information Access" },
+    { id: "emerging-technology", name: "Emerging Technology & Digital Disputes" },
+    { id: "international-cross-border", name: "International & Cross-Border Litigation" },
+    { id: "white-collar-crime", name: "White-Collar Crime & Regulatory Enforcement" },
+    { id: "healthcare-pharmaceutical", name: "Healthcare & Pharmaceutical Litigation" },
+    { id: "infrastructure-project", name: "Infrastructure & Project Finance Litigation" },
+    { id: "government-public-sector", name: "Government & Public Sector Litigation" },
+    { id: "specialized-commercial", name: "Specialized Commercial Litigation" },
+    { id: "crisis-management", name: "Crisis Management & Litigation Support" },
+    { id: "technology-enhanced", name: "Technology-Enhanced Litigation Support" },
+    { id: "financial-forensic", name: "Specialized Financial & Forensic Litigation Support" },
+    { id: "strategic-consulting", name: "Strategic Litigation Consulting" },
+    { id: "trial-hearing-support", name: "Trial and Hearing Support Services" },
+    { id: "crisis-prevention", name: "Crisis Management & Dispute Prevention" },
+    { id: "regulatory-investigation", name: "Regulatory Investigation and Enforcement" },
+    { id: "case-management", name: "Case Management & Administrative Support" },
+    { id: "appellate-constitutional", name: "Appellate and Constitutional Law" },
+    { id: "emerging-areas", name: "Emerging Areas of Practice" }
+  ];
+
+  // Registration Works subcategories
+  const registrationSubcategories = [
+    { id: "corporate-registrations", name: "Corporate Registrations & Incorporations" },
+    { id: "financial-services-reg", name: "Financial Services Registrations" },
+    { id: "intellectual-property-reg", name: "Intellectual Property Registrations" },
+    { id: "regulatory-compliance-reg", name: "Regulatory & Compliance Registrations" },
+    { id: "msme-government-reg", name: "MSME & Government Registrations" },
+    { id: "social-sector-ngo", name: "Social Sector & NGO Registrations" },
+    { id: "professional-business-licenses", name: "Professional & Business Licenses" },
+    { id: "real-estate-construction", name: "Real Estate & Construction" },
+    { id: "specialized-registrations", name: "Specialized Registrations" },
+    { id: "emerging-tech-digital", name: "Emerging Technology & Digital Services" },
+    { id: "healthcare-medical", name: "Healthcare & Medical Services" },
+    { id: "education-training", name: "Education & Training" },
+    { id: "agriculture-allied", name: "Agriculture & Allied Services" },
+    { id: "transportation-logistics", name: "Transportation & Logistics" },
+    { id: "digital-compliance-data", name: "Digital Compliance & Data Protection" },
+    { id: "renewable-energy-env", name: "Renewable Energy & Environment" },
+    { id: "aviation-maritime", name: "Aviation & Maritime" },
+    { id: "telecommunications-broadcast", name: "Telecommunications & Broadcasting" },
+    { id: "mining-petroleum", name: "Mining & Petroleum" },
+    { id: "international-trade-investment", name: "International Trade & Foreign Investment" },
+    { id: "consumer-protection-standards", name: "Consumer Protection & Standards" },
+    { id: "sports-recreation", name: "Sports & Recreation" }
+  ];
 
   // Handle Articles & Blogs navigation
   const handleArticlesClick = () => {
     navigate('/articles-blogs');
     setIsMenuOpen(false);
+  };
+
+  // Handle dropdown with delay
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setServicesOpen(false);
+      setLitigationOpen(false);
+      setRegistrationOpen(false);
+    }, 200); // 200ms delay before closing
+  };
+
+  // Handle litigation submenu
+  const handleLitigationMouseEnter = () => {
+    setLitigationOpen(true);
+  };
+
+  const handleLitigationMouseLeave = () => {
+    setLitigationOpen(false);
+  };
+
+  // Handle registration submenu
+  const handleRegistrationMouseEnter = () => {
+    setRegistrationOpen(true);
+  };
+
+  const handleRegistrationMouseLeave = () => {
+    setRegistrationOpen(false);
+  };
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setServicesOpen(false);
+        setLitigationOpen(false);
+        setRegistrationOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Toggle dropdown on click (alternative approach)
+  const handleServicesClick = () => {
+    setServicesOpen(!servicesOpen);
   };
 
   return (
@@ -704,27 +626,85 @@ const Navigation = ({
             <NavLink onClick={() => scrollToSection("home")}>Home</NavLink>
             <NavLink onClick={() => scrollToSection("about")}>About</NavLink>
 
-            {/* Our Services Dropdown - Desktop */}
+            {/* Our Services Dropdown - Desktop (Updated with Litigation Subcategories) */}
             <ServicesDropdownContainer
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
+              ref={dropdownRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              <ServicesDropdownButton type="button">
+              <ServicesDropdownButton 
+                type="button"
+                onClick={handleServicesClick}
+              >
                 Our Services
                 <DropdownIcon $isOpen={servicesOpen} />
               </ServicesDropdownButton>
 
               {servicesOpen && (
                 <ServicesDropdownMenu>
+                  {/* Litigation Support with Subcategories */}
+                  <ServiceItemWithSubmenu
+                    onMouseEnter={handleLitigationMouseEnter}
+                    onMouseLeave={handleLitigationMouseLeave}
+                  >
+                    <ServiceName>
+                      Litigation Support
+                      <SubmenuArrow>→</SubmenuArrow>
+                    </ServiceName>
+                    
+                    {litigationOpen && (
+                      <LitigationSubmenu>
+                        {litigationSubcategories.map((subcategory) => (
+                          <SubmenuItem
+                            key={subcategory.id}
+                            onClick={() => {
+                              scrollToSection(subcategory.id);
+                              setServicesOpen(false);
+                              setLitigationOpen(false);
+                            }}
+                          >
+                            {subcategory.name}
+                          </SubmenuItem>
+                        ))}
+                      </LitigationSubmenu>
+                    )}
+                  </ServiceItemWithSubmenu>
+
+                  {/* Registration Works with Subcategories */}
+                  <ServiceItemWithSubmenu
+                    onMouseEnter={handleRegistrationMouseEnter}
+                    onMouseLeave={handleRegistrationMouseLeave}
+                  >
+                    <ServiceName>
+                      Registration Works
+                      <SubmenuArrow>→</SubmenuArrow>
+                    </ServiceName>
+                    
+                    {registrationOpen && (
+                      <RegistrationSubmenu>
+                        {registrationSubcategories.map((subcategory) => (
+                          <SubmenuItem
+                            key={subcategory.id}
+                            onClick={() => {
+                              scrollToSection(subcategory.id);
+                              setServicesOpen(false);
+                              setRegistrationOpen(false);
+                            }}
+                          >
+                            {subcategory.name}
+                          </SubmenuItem>
+                        ))}
+                      </RegistrationSubmenu>
+                    )}
+                  </ServiceItemWithSubmenu>
+
+                  {/* Other Services */}
                   {[
-                    { id: "litigation", name: "Litigation" },
-                    { id: "ipr", name: "IPR"},
-                    { id: "registration", name: "Registration"},
                     {
                       id: "compliance-services",
                       name: "Compliance Services" 
                     },
-                    { id: "consulting", name: "Consulting" },
+                    { id: "consulting", name: "Consulting Advice & Strategy" },
                     {
                       id: "contracts-drafting",
                       name: "Contracts & Agreements Drafting"
@@ -732,7 +712,10 @@ const Navigation = ({
                   ].map((service) => (
                     <ServiceItem
                       key={service.id}
-                      onClick={() => scrollToSection(service.id)}
+                      onClick={() => {
+                        scrollToSection(service.id);
+                        setServicesOpen(false);
+                      }}
                     >
                       <ServiceName>{service.name}</ServiceName>
                     </ServiceItem>
@@ -742,7 +725,7 @@ const Navigation = ({
             </ServicesDropdownContainer>
 
             <NavLink onClick={() => scrollToSection("success-story")}>
-              Success Story
+              Success Stories
             </NavLink>
 
             {/* Fixed Articles & Blogs Link */}
@@ -754,7 +737,7 @@ const Navigation = ({
           </DesktopMenu>
 
           {/* Call Button & Hamburger */}
-          {/* <NavActions>
+            {/* <NavActions>
             <CallButton href="tel:+91-9876543210">
               <PhoneIcon />
               Call Now
@@ -765,7 +748,7 @@ const Navigation = ({
             >
               {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
             </MobileMenuButton>
-          </NavActions> */}
+          </NavActions>   */}
         </NavContent>
 
         {/* Mobile Menu */}
@@ -790,10 +773,64 @@ const Navigation = ({
 
                 {mobileServicesOpen && (
                   <MobileServicesDropdown>
+                    {/* Mobile Litigation Support with Subcategories */}
+                    <div>
+                      <MobileLitigationButton
+                        onClick={() => setMobileLitigationOpen(!mobileLitigationOpen)}
+                      >
+                        <span>Litigation Support</span>
+                        <MobileDropdownIcon $isOpen={mobileLitigationOpen} />
+                      </MobileLitigationButton>
+
+                      {mobileLitigationOpen && (
+                        <MobileLitigationDropdown>
+                          {litigationSubcategories.map((subcategory) => (
+                            <MobileSubmenuItem
+                              key={subcategory.id}
+                              onClick={() => {
+                                scrollToSection(subcategory.id);
+                                setIsMenuOpen(false);
+                                setMobileServicesOpen(false);
+                                setMobileLitigationOpen(false);
+                              }}
+                            >
+                              {subcategory.name}
+                            </MobileSubmenuItem>
+                          ))}
+                        </MobileLitigationDropdown>
+                      )}
+                    </div>
+
+                    {/* Mobile Registration Works with Subcategories */}
+                    <div>
+                      <MobileRegistrationButton
+                        onClick={() => setMobileRegistrationOpen(!mobileRegistrationOpen)}
+                      >
+                        <span>Registration Works</span>
+                        <MobileDropdownIcon $isOpen={mobileRegistrationOpen} />
+                      </MobileRegistrationButton>
+
+                      {mobileRegistrationOpen && (
+                        <MobileRegistrationDropdown>
+                          {registrationSubcategories.map((subcategory) => (
+                            <MobileSubmenuItem
+                              key={subcategory.id}
+                              onClick={() => {
+                                scrollToSection(subcategory.id);
+                                setIsMenuOpen(false);
+                                setMobileServicesOpen(false);
+                                setMobileRegistrationOpen(false);
+                              }}
+                            >
+                              {subcategory.name}
+                            </MobileSubmenuItem>
+                          ))}
+                        </MobileRegistrationDropdown>
+                      )}
+                    </div>
+
+                    {/* Other Mobile Services */}
                     {[
-                      { id: "litigation", name: "Litigation" },
-                      { id: "ipr", name: "IPR" },
-                      { id: "registration", name: "Registration" },
                       {
                         id: "compliance-services",
                         name: "Compliance Services",
@@ -806,7 +843,11 @@ const Navigation = ({
                     ].map((service) => (
                       <MobileServiceItem
                         key={service.id}
-                        onClick={() => scrollToSection(service.id)}
+                        onClick={() => {
+                          scrollToSection(service.id);
+                          setIsMenuOpen(false);
+                          setMobileServicesOpen(false);
+                        }}
                       >
                         {service.name}
                       </MobileServiceItem>

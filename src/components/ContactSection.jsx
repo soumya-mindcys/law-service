@@ -178,8 +178,8 @@ const ContactSection = () => {
                   <div>
                     <div className="font-semibold text-black">Office Address</div>
                     <div className="text-gray-600">
-                      123 Legal Complex, Bhubaneswar<br />
-                      Odisha 751001, India
+                      Flat No. 103, Harihara Palace <br />
+Shastri Nagar, Nayapalli, Bhubaneswar, Odisha 751001
                     </div>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ const ContactSection = () => {
                   <Phone className="h-5 w-5 text-orange-500" />
                   <div>
                     <div className="font-semibold text-black">Phone</div>
-                    <div className="text-gray-600">+91-9876543210</div>
+                    <div className="text-gray-600">+91-7008955045</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -201,23 +201,24 @@ const ContactSection = () => {
                   <Clock className="h-5 w-5 text-orange-500" />
                   <div>
                     <div className="font-semibold text-black">Office Hours</div>
-                    <div className="text-gray-600">Mon-Fri: 9:00 AM - 6:00 PM</div>
+                    <div className="text-gray-600">Mon-Fri: 9:00 AM - 9:00 PM</div>
                   </div>
                 </div>
               </div>
             </GetInTouchBox>
             <MapContainer>
-              <iframe
-                title="DKP & Associates Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.760964899839!2d85.8245393153846!3d20.2960589863937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909a5e2e2b6e7%3A0x7e2b7e2b7e2b7e2b!2sBhubaneswar%2C%20Odisha%20751001%2C%20India!5e0!3m2!1sen!2sin!4v1688999999999!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </MapContainer>
+  <iframe
+    title="DKP & Associates Location"
+    src="https://www.google.com/maps?q=Flat+No.+103,+Harihara+Palace,+Shastri+Nagar,+Nayapalli,+Bhubaneswar,+Odisha+751001&output=embed"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</MapContainer>
+
           </LeftCol>
           {/* Right Side: Contact Form */}
           <div className="w-full lg:w-1/2">

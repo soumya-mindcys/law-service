@@ -125,27 +125,28 @@ const DisclaimerModal = ({ onAgree, onDisagree }) => {
         <Title>Disclaimer & Confirmation</Title>
         <Content>
           <p>
-            As per the rules of the Bar Council of Bharat, we are not permitted to solicit work or advertise. The user acknowledges the following:
+            The rules of the Bar Council of India impose restrictions on maintaining a web page and do not permit lawyers to provide information concerning their areas of practice. DKP & Associates is, therefore, constrained from providing any further information on this web page.
+          </p>
+          <p>
+            The rules of the Bar Council of India prohibit law firms from soliciting work or advertising in any manner. By clicking on ‘I Agree to Proceed’, the user acknowledges that:
           </p>
           <ul>
             <li>
-              No solicitation or advertisement of any kind has been made by us or any member through this website{' '}
-              <a href="https://www.preachlaw.com" target="_blank" rel="noopener noreferrer">
-                www.preachlaw.com
-              </a>.
+              The user wishes to gain more information about DKP & Associates, its practice areas, and its attorneys for his/her own information and use.
             </li>
             <li>
-              The user is accessing the website for informational purposes only, and at their own discretion.
-              No lawyer-client relationship is formed by use of this site.
+              The information is made available/provided to the user only on his/her specific request and any information obtained or material downloaded from this website is completely at the user’s volition and any transmission, receipt or use of this site is not intended to, and will not, create any lawyer-client relationship.
             </li>
             <li>
-              All content is intended only for general guidance. For legal matters, users must seek independent professional advice.
-              We are not responsible for any actions based on information provided here.
+              None of the information contained on the website is in the nature of a legal opinion or otherwise amounts to any legal advice.
+            </li>
+            <li>
+              DKP & Associates is not liable for any consequence of any action taken by the user relying on material/information provided under this website. In cases where the user has any legal issues, he/she in all cases must seek independent legal advice.
             </li>
           </ul>
         </Content>
         <ButtonGroup>
-          <ActionButton onClick={onAgree}>I Agree & Proceed</ActionButton>
+          <ActionButton onClick={onAgree}>I Agree to Proceed</ActionButton>
           <ActionButton disagree onClick={onDisagree}>Decline</ActionButton>
         </ButtonGroup>
       </ModalContainer>

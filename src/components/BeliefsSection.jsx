@@ -1,5 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { Phone, Menu, X, Scale, ChevronDown, ChevronUp } from "lucide-react";
+
 
 // === Styled CSS ===
 
@@ -81,7 +83,6 @@ const Description = styled.p`
   color: #444;
   line-height: 1.7;
 `;
-
 // === Main Component ===
 
 const BeliefsSection = () => {
@@ -103,8 +104,7 @@ const BeliefsSection = () => {
   return (
    <Section>
   <div style={{ textAlign: 'center' }}>
-    <Logo src="https://placehold.co/48x48/png?text=P" alt="logo" style={{ verticalAlign: 'middle', marginRight: '12px' }} />
-    <Title>Preach Law Believes In</Title>
+    <Title>DKP & Associates Believes In</Title>
   </div>
   <CardContainer>
     {data.map((item, index) => (

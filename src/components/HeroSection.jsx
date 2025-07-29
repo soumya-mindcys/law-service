@@ -1,7 +1,6 @@
 // HeroSection.jsx
 import React from 'react';
 import styled from 'styled-components';
-import LegalUpdates from "./LegalUpdates"
 
 const Section = styled.section`
   min-height: 100vh;
@@ -157,7 +156,6 @@ const HeroSection = ({ scrollToSection }) => (
       </Container>
     </Overlay>
   </Section>
-   <LegalUpdates />
    </>
 );
 

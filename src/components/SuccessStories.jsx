@@ -3,6 +3,7 @@ import React from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import styled from 'styled-components';
 import '../App.css';
+import LegalUpdates from "./LegalUpdates"
 
 const Section = styled.section`
   padding: 4rem 0;
@@ -109,6 +110,7 @@ const Dot = styled.button`
 `;
 
 const SuccessStories = ({ testimonials, currentTestimonial, setCurrentTestimonial }) => (
+  <>
   <Section id="success-stories">
     <Container>
       <h2 className="section-title">Success Stories</h2>
@@ -148,6 +150,8 @@ const SuccessStories = ({ testimonials, currentTestimonial, setCurrentTestimonia
       </CardWrapper>
     </Container>
   </Section>
+   <LegalUpdates />
+  </>
 );
 
 export default SuccessStories;

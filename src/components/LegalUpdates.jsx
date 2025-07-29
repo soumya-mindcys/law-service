@@ -1,6 +1,8 @@
 // src/components/LegalUpdates.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import sanityClient from '../sanityClient.js';
 
 const LegalUpdatesWrapper = styled.section`
   background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac') no-repeat center center/cover;
@@ -38,47 +40,108 @@ const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
 `;
 
 const CardText = styled.p`
   font-size: 1rem;
-  color: #333;
+  color: #666;
+  line-height: 1.6;
 `;
 
-const ReadMore = styled.a`
+const ReadMore = styled.button`
   color: #e30613;
   font-weight: bold;
   text-decoration: none;
   display: inline-block;
   margin-top: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 
   &:hover {
-    text-decoration: underline;
+    background-color: #e30613;
+    color: white;
   }
 `;
 
+const LoadingMessage = styled.div`
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+`;
+
 const LegalUpdates = () => {
-  const updates = [
-    {
-      text: "SC refuses to entertain plea seeking CBI probe into death of former Arunachal CM Kalikho Pul",
-    },
-    {
-      text: "Supreme Court gives approval for COVID in-patient facility within court complex, leaves it to Delhi government to operate the facility",
-    },
-    {
-      text: "The Supreme Court has rejected the plea (of tenants) for a waiver on rent. Meaning the payment of rent cannot be refused and is mandatory for the tenant for any property that they occupy",
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == "post"]{title, slug, body}`)
+      .then((data) => {
+        setPosts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching posts:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  const convertToText = (body) => {
+    if (Array.isArray(body)) {
+      return body
+        .map((block) =>
+          block.children ? block.children.map((child) => child.text).join(' ') : ''
+        )
+        .join(' ');
+    }
+    return body;
+  };
+
+  const getExcerpt = (body) => {
+    const text = convertToText(body);
+    const words = text.split(' ');
+    return words.slice(0, 20).join(' ') + (words.length > 20 ? '...' : '');
+  };
+
+  const handleReadMore = () => {
+    navigate('/articles-blogs'); // Redirect to blog page
+  };
+
+  if (loading) {
+    return (
+      <LegalUpdatesWrapper>
+        <LoadingMessage>Loading Legal Updates...</LoadingMessage>
+      </LegalUpdatesWrapper>
+    );
+  }
 
   return (
     <LegalUpdatesWrapper>
       <Title>Legal Updates</Title>
       <Underline />
       <CardsContainer>
-        {updates.map((item, index) => (
+        {posts.slice(0, 3).map((post, index) => (
           <Card key={index}>
-            <CardText>{item.text}</CardText>
-            <ReadMore href="#">Read More</ReadMore>
+            <CardTitle>{post.title}</CardTitle>
+            <CardText>{getExcerpt(post.body)}</CardText>
+            <ReadMore onClick={handleReadMore}>Read More</ReadMore>
           </Card>
         ))}
       </CardsContainer>

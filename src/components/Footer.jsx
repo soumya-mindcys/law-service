@@ -179,10 +179,10 @@ const Footer = ({ scrollToSection }) => (
             <BrandName>DKP & Associates</BrandName>
           </BrandRow>
           <FooterText>
-            Providing trusted legal solutions across Odisha since 2008. 
+            Providing trusted legal solutions across Odisha since 2021. 
             Your success is our commitment.
           </FooterText>
-          <FooterSubText>Established 2008</FooterSubText>
+          <FooterSubText>Established 2021</FooterSubText>
         </div>
         <div>
           <FooterTitle>Quick Links</FooterTitle>

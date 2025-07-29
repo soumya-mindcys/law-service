@@ -165,15 +165,14 @@ const AboutSection = () => (
     <Container>
       <Title>About DKP & Associates</Title>
       <Grid>
-        <div>
+         <div>
           <Text>
-            Established with a commitment to excellence, DKP & Associates has been serving clients 
-            across Odisha with comprehensive legal solutions. Our team of experienced advocates 
-            brings deep understanding of local legal landscape and regulatory frameworks.
+            Founded with a vision to deliver unmatched legal excellence, DKP & Associates is a leading law firm based in Odisha, India. Our team of seasoned advocates, with associates across all districts of Odisha, is committed to providing comprehensive, strategic, and client-focused legal services.
           </Text>
           <Text as="p" style={{marginBottom: 0}}>
-            We specialize in commercial law, mining law, trade regulations, and dispute resolution, 
-            providing personalized strategies for each client's unique needs.
+            With decades of collective experience across trial courts, tribunals, the High Court, and regulatory forums, we offer robust solutions in Commercial Law, Mining Law, Trade Law, and Competition Law.<br />
+            At DKP & Associates, integrity, expertise, and results form the pillars of our practice. We understand the challenges businesses and individuals face, and we work relentlessly to secure favorable outcomes for our clients.<br />
+            Your success is our mission. Whether you are navigating complex regulations, resolving disputes, or expanding your business operations, DKP & Associates stands ready to be your trusted legal partner across Odisha and beyond.
           </Text>
         </div>
         <ImageWrapper>
@@ -185,16 +184,16 @@ const AboutSection = () => (
       </Grid>
       <StatsGrid>
         <StatCard>
-          <StatNumber><CountUp end={1000} duration={2} suffix="+" /></StatNumber>
+          <StatNumber><CountUp end={500} duration={3} suffix="+" /></StatNumber>
           <StatLabel>Cases Handled</StatLabel>
         </StatCard>
         <StatCard>
-          <StatNumber><CountUp end={5} duration={2} suffix="+" /></StatNumber>
-          <StatLabel>Years Experience</StatLabel>
+          <StatNumber><CountUp end={30} duration={3} suffix="+" /></StatNumber>
+          <StatLabel>Collective Years of Experience</StatLabel>
         </StatCard>
         <StatCard>
-          <StatNumber><CountUp end={30} duration={2} /></StatNumber>
-          <StatLabel>Odisha Districts</StatLabel>
+          <StatNumber><CountUp end={30} duration={3} /></StatNumber>
+          <StatLabel>Odisha of Districts</StatLabel>
         </StatCard>
       </StatsGrid>
       <QuoteBox>
